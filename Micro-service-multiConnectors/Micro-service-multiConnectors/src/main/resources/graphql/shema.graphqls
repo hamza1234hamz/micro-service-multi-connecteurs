@@ -1,0 +1,23 @@
+type Query {
+    personList : [Person],
+    PersonById (id:String) : Person
+}
+
+type Mutation {
+    savePerson(personTosave : PersonDto) : Person
+    updatePerson(id : String,personToUpdate : PersonDto) : Person
+    DeletePerson(id : String) : Boolean
+}
+
+type Person{
+    id : String,
+    nom : String,
+    email : String,
+    ContactNumber : String
+}
+
+input PersonDto{
+    nom : String,
+    email : String,
+    ContactNumber : String
+}

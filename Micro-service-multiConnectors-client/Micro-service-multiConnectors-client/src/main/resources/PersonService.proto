@@ -1,0 +1,38 @@
+syntax="proto3"; //la version de protocul buffers
+option java_package="com.example.MicroservicemultiConnectorsclient.stub";
+service  PersonService {
+  rpc getAllPersons(GetAllPersonsRequest) returns (GetAllPersonsResponse); //unary model (seul request -- seul reponse
+  rpc getPersonById(GePersonByIdRequest) returns (GePersonByIdResponse);
+  rpc savePersonX(SavePersonRequest) returns (SavePersonResponse);
+}
+
+message GetAllPersonsRequest{}
+
+message GetAllPersonsResponse{
+  repeated Person persons=1;  //repeated permet de returner une liste des person
+}
+
+message Person {
+  int64 id=1;
+  string nom=2;
+  string email=3;
+}
+message GePersonByIdRequest{
+  int64 personId=1;
+}
+message GePersonByIdResponse{
+  Person person=1;
+}
+
+message SavePersonRequest{
+  PersonRequest person=1;
+}
+
+message PersonRequest{
+  string nom=1;
+  string email=2;
+}
+
+message SavePersonResponse{
+  Person person=1;
+}
